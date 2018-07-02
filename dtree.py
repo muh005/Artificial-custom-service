@@ -163,9 +163,6 @@ def getDepth(myTree):
 
 	return maxDepth
 
-
-
-
 # createDataSet - create a test dataSet
 def createDataSet():
 	'create testing dataSet'
