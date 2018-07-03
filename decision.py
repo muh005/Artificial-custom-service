@@ -79,6 +79,7 @@ def optimize(dataSet):
 
 # priority - choose a best label by priority vote
 # classList - list of labels
+#
 def priority(classList):
 	'get best label by priority vote'
 	classCount = {}
@@ -163,6 +164,27 @@ def getDepth(myTree):
 
 	return maxDepth
 
+# storeTree - store the decision tree in file
+# myTree - decision tree
+# filename - store to file
+def storeTree(myTree, filename):
+	'store decision tree'
+	import pickle
+
+	file = open(filename, 'wb+')
+	pickle.dump(myTree, file)
+	file.close()
+
+# restore - restore the tree
+# filename - file to store
+#
+def restore(filename):
+	'restore decision tree'
+	import pickle
+
+	file = open(filename,'rb')
+	myTree = pickle.load(file)
+	return myTree
 
 import matplotlib.pyplot as plt
 decisionNode = dict(boxstyle="sawtooth", fc="0.8")
@@ -187,7 +209,7 @@ def plotNode(text, center, parent, nodetype):
 def plotMidText(center, parent, text):
     'add mid text'
     
-    # 中间位置坐标
+    # coordinate of mid point
     xMid = (parent[0]-center[0])/2.0 + center[0]
     yMid = (parent[1]-center[1])/2.0 + center[1]
     
@@ -202,27 +224,27 @@ def plotTree(myTree, parent, text):
     
     # get num of leaves
     count = numLeaves(myTree)
-    firstStr = myTree.keys()[0]
+    firstStr = list(myTree.keys())[0]
     center = (plotTree.x + (1.0 + float(count))/2.0/plotTree.width, plotTree.y)
     
-    # 绘制当前节点到子树节点(含子树节点)的信息
-    plotMidText(cntrPt, parentPt, nodeTxt)
-    plotNode(firstStr, cntrPt, parentPt, decisionNode)
+    # plot the information to subtree
+    plotMidText(center, parent, text)
+    plotNode(firstStr, center, parent, decisionNode)
     
-    # 获取子树信息
+    # get subtree
     secondDict = myTree[firstStr]
-    # 开始绘制子树，纵坐标-1。        
-    plotTree.yOff = plotTree.yOff - 1.0/plotTree.totalD
+    # plot subtree, y-axis - 1。        
+    plotTree.y = plotTree.y - 1.0/plotTree.depth
       
     for key in secondDict.keys():
-        # plot subtree recursion
+        # plot subtree recursively
         if type(secondDict[key]).__name__=='dict':
-            plotTree(secondDict[key],cntrPt,str(key))
-        # plot leave node directly
+            plotTree(secondDict[key],center,str(key))
+        # plot leave node
         else:
             plotTree.x = plotTree.x + 1.0/plotTree.width
             plotNode(secondDict[key], (plotTree.x, plotTree.y), center, leafNode)
-            plotMidText((plotTree.xOff, plotTree.yOff), cntrPt, str(key))
+            plotMidText((plotTree.x, plotTree.y), center, str(key))
      
     # finish plot subtree, increment y axis
     plotTree.y = plotTree.y + 1.0/plotTree.depth
@@ -249,6 +271,51 @@ def createPlot(myTree):
     plotTree(myTree, (0.5,1.0), '')
     plt.show()
 
+# classify - classify decision with decision tree
+# myTree - my decision tree
+# featLabels - feature label set
+# testVec - object needs to classify
+def classify(myTree, featLabels, testVec):
+	'classify with decision tree'
+	# First classifier label
+	firstStr = list(myTree.keys())[0]
+	secondDict = myTree[firstStr]
+
+	featIndex = featLabels.index(firstStr)
+	key = testVec[featIndex]
+
+	valueOfFeat = secondDict[key]
+
+	# find label recursively
+	if isinstance(valueOfFeat, dict):
+		classLabel = classify(valueOfFeat, featLabels, testVec)
+	# already label
+	else:
+		classLabel = valueOfFeat
+
+	return classLabel
+
+
+# test - test shannon entropy with test dataSet
+def test():
+	'test'
+	myDataSet, labels = createDataSet()
+	#print (optimize(myDataSet))
+	#print (entropy(myDataSet))
+	myTree = createTree(myDataSet, labels)
+	print (myTree)
+	#print (numLeaves(myTree))
+	#print (getDepth(myTree))
+	createPlot(myTree)
+	storeTree(myTree, './sample')
+
+	sampleTree = restore('./sample')
+
+	labels = ['computer science', 'machine learning']
+	print(classify(sampleTree, labels, [1, 1]))
+
+
+
 # createDataSet - create a test dataSet
 def createDataSet():
 	'create testing dataSet'
@@ -261,17 +328,6 @@ def createDataSet():
 	labels = ['computer science', 'machine learning']
 
 	return dataSet, labels
-
-# test - test shannon entropy with test dataSet
-def test():
-	'test'
-	myDataSet, labels = createDataSet()
-	print (optimize(myDataSet))
-	print (entropy(myDataSet))
-	myTree = createTree(myDataSet, labels)
-	print (myTree)
-	print (numLeaves(myTree))
-	print (getDepth(myTree))
 
 # main
 if __name__ == "__main__":
