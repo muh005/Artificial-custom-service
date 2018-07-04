@@ -1,8 +1,10 @@
 # Decision-Tree
 A decision tree for automatic speech recognition
+A classifier for intent classification
 
 # Usage
 python decision.py
+python classifier.py
 
 # Sample output
 {'computer science': {0: 'no', 1: {'machine learning': {0: 'no', 1: 'yes'}}}}

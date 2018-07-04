@@ -311,8 +311,8 @@ def test():
 
 	sampleTree = restore('./sample')
 
-	labels = ['computer science', 'machine learning']
-	print(classify(sampleTree, labels, [1, 1]))
+	labels = ['computer science', 'artificial intelligence','machine learning', 'deep learning']
+	print(classify(sampleTree, labels, [1, 1, 0, 0]))
 
 
 
@@ -320,12 +320,24 @@ def test():
 def createDataSet():
 	'create testing dataSet'
 
-	dataSet = [[1, 1, 'yes'],
-			   [1, 1, 'yes'],
-			   [1, 0, 'no'],
-			   [0, 1, 'no'],
-			   [0, 1, 'no']]
-	labels = ['computer science', 'machine learning']
+	dataSet = [[1, 1, 1, 1, 'yes'],
+			   [1, 1, 1, 1, 'yes'],
+			   [1, 0, 1, 1, 'no'],
+			   [0, 1, 1, 1, 'no'],
+			   [1, 1, 0, 1,	'no'],
+			   [1, 1, 1, 0, 'no'],
+			   [1, 0, 0, 1, 'no'],
+			   [1, 1, 0, 0, 'no'],
+			   [0, 0, 1, 1, 'no'],
+			   [0, 1, 0, 1,	'no'],
+			   [0, 1, 1, 0, 'no'],
+			   [0, 0, 0, 1, 'no'],
+			   [0, 0, 1, 0, 'no'],
+			   [0, 1, 0, 0, 'no'],
+			   [1, 0, 0, 0, 'no'],
+			   [0, 0, 0, 0, 'no']]
+
+	labels = ['computer science', 'artificial intelligence', 'machine learning', 'deep learning']
 
 	return dataSet, labels
 
