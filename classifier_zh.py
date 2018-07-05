@@ -5,26 +5,27 @@ import json
 import datetime
 import numpy as np
 import time
-import argparse
+import jieba
+
 stemmer = LancasterStemmer()
 
 training_data = []
 
 # createDataSet - create a dataset for training
-training_data.append({"class":"greeting", "sentence":"how are you"})
-training_data.append({"class":"greeting", "sentence":"how is your day?"})
-training_data.append({"class":"greeting", "sentence":"good day"})
-training_data.append({"class":"greeting", "sentence":"how is it going today?"})
+training_data.append({"class":"你好", "sentence":"您好"})
+training_data.append({"class":"你好", "sentence":"您今天怎么样?"})
+training_data.append({"class":"你好", "sentence":"你好"})
+training_data.append({"class":"你好", "sentence":"您开心吗?"})
 
-training_data.append({"class":"goodbye", "sentence":"have a nice day"})
-training_data.append({"class":"goodbye", "sentence":"see you later"})
-training_data.append({"class":"goodbye", "sentence":"have a nice day"})
-training_data.append({"class":"goodbye", "sentence":"talk to you soon"})
+training_data.append({"class":"再见", "sentence":"祝您今天好心情"})
+training_data.append({"class":"再见", "sentence":"晚点再见"})
+training_data.append({"class":"再见", "sentence":"再见"})
+training_data.append({"class":"再见", "sentence":"拜拜"})
 
-training_data.append({"class":"sandwich", "sentence":"make me a sandwich"})
-training_data.append({"class":"sandwich", "sentence":"can you make a sandwich?"})
-training_data.append({"class":"sandwich", "sentence":"having a sandwich today?"})
-training_data.append({"class":"sandwich", "sentence":"what's for lunch?"})
+training_data.append({"class":"吃饭", "sentence":"给我一些吃的"})
+training_data.append({"class":"吃饭", "sentence":"你吃饭吗?"})
+training_data.append({"class":"吃饭", "sentence":"你今天吃了什么?"})
+training_data.append({"class":"吃饭", "sentence":"午饭吃了什么?"})
 print ("%s sentences in training data" % len(training_data))
 
 # preprocess - tokenize each word, remove duplicates, to lower case 
@@ -239,13 +240,7 @@ def classify(sentence):
 	print ("%s \n classification: %s" % (sentence, return_results))
 	return return_results
 
-classify("make me a sandwich")
-classify("how are you today?")
-classify("talk to you tomorrow")
-classify("who are you")
-classify("make me some food")
-classify("how was your lunch today")
-classify("good day")
+
 
 
 
