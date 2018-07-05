@@ -20,7 +20,7 @@ training_data.append({"class":"你好", "sentence":"您开心吗?"})
 training_data.append({"class":"再见", "sentence":"祝您今天好心情"})
 training_data.append({"class":"再见", "sentence":"晚点再见"})
 training_data.append({"class":"再见", "sentence":"再见"})
-training_data.append({"class":"再见", "sentence":"拜拜"})
+training_data.append({"class":"再见", "sentence":"晚点再和你说"})
 
 training_data.append({"class":"吃饭", "sentence":"给我一些吃的"})
 training_data.append({"class":"吃饭", "sentence":"你吃饭吗?"})
@@ -36,14 +36,13 @@ ignore_words = ['?']
 
 for pattern in training_data:
 	#tokenize each word in the sentence and append to word list
-	w = nltk.word_tokenize(pattern['sentence'])
+	w = jieba.lcut(pattern['sentence'], cut_all = True)
 	words.extend(w)
 	documents.append((w, pattern['class']))
 	if pattern['class'] not in classes:
 		classes.append(pattern['class'])
 
 # remove the duplicate and toLowerCase
-words = [stemmer.stem(w.lower()) for w in words if w not in ignore_words]
 words = list(set(words))
 classes = list(set(classes))
 
@@ -241,7 +240,14 @@ def classify(sentence):
 	return return_results
 
 
-
+classify("我想要吃的")
+classify("你今天过的好不好")
+classify("明天再和你说")
+classify("你是谁")
+classify("您中饭吃了什么")
+classify("后天再见")
+classify("给我做些吃的")
+classify("今天好")
 
 
 

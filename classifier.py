@@ -25,7 +25,7 @@ training_data.append({"class":"sandwich", "sentence":"make me a sandwich"})
 training_data.append({"class":"sandwich", "sentence":"can you make a sandwich?"})
 training_data.append({"class":"sandwich", "sentence":"having a sandwich today?"})
 training_data.append({"class":"sandwich", "sentence":"what's for lunch?"})
-print ("%s sentences in training data" % len(training_data))
+#print ("%s sentences in training data" % len(training_data))
 
 # preprocess - tokenize each word, remove duplicates, to lower case 
 words = []
@@ -46,9 +46,9 @@ words = [stemmer.stem(w.lower()) for w in words if w not in ignore_words]
 words = list(set(words))
 classes = list(set(classes))
 
-print (len(documents), "documents")
-print (len(classes), "classes", classes)
-print (len(words), "words", words)
+#print (len(documents), "documents")
+#print (len(classes), "classes", classes)
+#print (len(words), "words", words)
 
 training = []
 output = []
@@ -71,9 +71,9 @@ for doc in documents:
 	output.append(output_row)
 i = 0
 w = documents[i][0]
-print([stemmer.stem(word.lower()) for word in w])
-print(training[i])
-print(output[i])
+#print([stemmer.stem(word.lower()) for word in w])
+#print(training[i])
+#print(output[i])
 
 # sigmoid - compute sigmoid nonlinearity
 # x - parameter
@@ -206,7 +206,7 @@ def train(X, y, hidden_neurons= 10, alpha=1, epochs = 50000, dropout = False, dr
 
 	with open(synapse_file, 'w') as outfile:
 		json.dump(synapse, outfile, indent = 4, sort_keys = True)
-	print("saved synapses to: ", synapse_file) 
+#	print("saved synapses to: ", synapse_file) 
 
 X = np.array(training)
 y = np.array(output)
@@ -236,16 +236,8 @@ def classify(sentence):
 	results = [[i, r] for i, r in enumerate(results) if r > ERROR_THRESHOLD]
 	results.sort(key = lambda x: x[1], reverse = True)
 	return_results = [[classes[r[0]], r[1]] for r in results]
-	print ("%s \n classification: %s" % (sentence, return_results))
+#	print ("%s \n classification: %s" % (sentence, return_results))
 	return return_results
-
-classify("make me a sandwich")
-classify("how are you today?")
-classify("talk to you tomorrow")
-classify("who are you")
-classify("make me some food")
-classify("how was your lunch today")
-classify("good day")
 
 
 
