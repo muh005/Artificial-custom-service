@@ -21,10 +21,61 @@ training_data.append({"class":"goodbye", "sentence":"see you later"})
 training_data.append({"class":"goodbye", "sentence":"have a nice day"})
 training_data.append({"class":"goodbye", "sentence":"talk to you soon"})
 
-training_data.append({"class":"sandwich", "sentence":"make me a sandwich"})
-training_data.append({"class":"sandwich", "sentence":"can you make a sandwich?"})
-training_data.append({"class":"sandwich", "sentence":"having a sandwich today?"})
-training_data.append({"class":"sandwich", "sentence":"what's for lunch?"})
+#training_data.append({"class":"sandwich", "sentence":"make me a sandwich"})
+#training_data.append({"class":"sandwich", "sentence":"can you make a sandwich?"})
+#training_data.append({"class":"sandwich", "sentence":"having a sandwich today?"})
+#training_data.append({"class":"sandwich", "sentence":"what's for lunch?"})
+
+training_data.append({"class":"notime", "sentence":"I do not have time"})
+training_data.append({"class":"notime", "sentence":"I am busy"})
+training_data.append({"class":"notime", "sentence":"I am in a meeting"})
+training_data.append({"class":"notime", "sentence":"I am driving"})
+
+training_data.append({"class":"harass", "sentence":"Are you a robot?"})
+training_data.append({"class":"harass", "sentence":"Let's eat"})
+training_data.append({"class":"harass", "sentence":"Are you beautiful"})
+training_data.append({"class":"harass", "sentence":"Can I have your phone number"})
+
+training_data.append({"class":"positive", "sentence":"I am interested"})
+training_data.append({"class":"positive", "sentence":"Okay"})
+training_data.append({"class":"positive", "sentence":"I want to know more"})
+training_data.append({"class":"positive", "sentence":"Yes"})
+
+training_data.append({"class":"negative", "sentence":"I do not want"})
+training_data.append({"class":"negative", "sentence":"I am not interested"})
+training_data.append({"class":"negative", "sentence":"I do not know"})
+training_data.append({"class":"negative", "sentence":"No"})
+
+training_data.append({"class":"safety", "sentence":"Is the fund safe?"})
+training_data.append({"class":"safety", "sentence":"Is the fund reliable"})
+training_data.append({"class":"safety", "sentence":"What is the fund repurchase rate"})
+training_data.append({"class":"safety", "sentence":"How secure is the fund?"})
+
+training_data.append({"class":"time", "sentence":"What is the fund term?"})
+training_data.append({"class":"time", "sentence":"How is the fund flow?"})
+training_data.append({"class":"time", "sentence":"When will the fund end"})
+training_data.append({"class":"time", "sentence":"How long is the fund term?"})
+
+training_data.append({"class":"profit","sentence":"What is the profit of the fund?"})
+training_data.append({"class":"profit","sentence":"How much can we get from the fund?"})
+training_data.append({"class":"profit","sentence":"What can we get from the fund"})
+training_data.append({"class":"profit","sentence":"How about the income?"})
+
+training_data.append({"class":"invest","sentence":"What is the fund's starting amount?"})
+training_data.append({"class":"invest","sentence":"How much do we need to invest"})
+training_data.append({"class":"invest","sentence":"Do we need to invest?"})
+training_data.append({"class":"invest","sentence":"What is the starting price"})
+
+training_data.append({"class":"manager","sentence":"Who is the manager"})
+training_data.append({"class":"manager","sentence":"Which company manages the fund"})
+training_data.append({"class":"manager","sentence":"Who manages the fund"})
+training_data.append({"class":"manager","sentence":"Who takes charges the fund"})
+
+training_data.append({"class":"confuse","sentence":"emmmm"})
+training_data.append({"class":"confuse","sentence":"I am confused"})
+training_data.append({"class":"confuse","sentence":"I can not hear you"})
+training_data.append({"class":"confuse","sentence":"I do not understand"})
+
 #print ("%s sentences in training data" % len(training_data))
 
 # preprocess - tokenize each word, remove duplicates, to lower case 

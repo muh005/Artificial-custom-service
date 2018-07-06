@@ -29,6 +29,7 @@ six = False
 seven = False
 eight = False
 nine = False
+result = ""
 
 def gonext():
 	if five is False:
@@ -61,15 +62,17 @@ while True:
 	if line == "no response":
 		print(corpus[17])
 
-#	return_results = classify(line)
+	return_results = classify(line)
 
-	# multiintent
-#	if len(return_results) > 1:
-#		print(corpus[status + 1])
-#		status = status + 1
+	if len(return_results) > 1:
+		print(corpus[status])
+		status = status + 1
 
-#	result = return_results[0][0]
-	result = line
+	if len(return_results) > 0:
+		result = return_results[0][0]
+
+	if result == "goodbye":
+		break
 
 	# first case
 	if status == 1:
