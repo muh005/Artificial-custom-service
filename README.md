@@ -1,15 +1,8 @@
-# Decision-Tree
-A decision tree for automatic speech recognition
-A classifier for intent classification
+# Artificial Custom Service  
+It is a neural network classifier based custom service.
 
-# Usage
-python decision.py  
-python classifier.py  
-python genetic.py  
+## Instructions 
+python bot.py
 
-# Sample output
-{'computer science': {0: 'no', 1: {'machine learning': {0: 'no', 1: 'yes'}}}}
-![image](https://github.com/muh005/Decision-Tree/blob/master/Figure_1.png)
-Classify [1, 1] return 'yes'
-
-![image](https://github.com/muh005/Decision-Tree/blob/master/Figure_2.png)
+## Sample output
+![image](https://github.com/muh005/Artificial-custom-service/blob/master/Sample.png)

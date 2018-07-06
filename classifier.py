@@ -19,7 +19,7 @@ training_data.append({"class":"greeting", "sentence":"how is it going today?"})
 training_data.append({"class":"goodbye", "sentence":"have a nice day"})
 training_data.append({"class":"goodbye", "sentence":"see you later"})
 training_data.append({"class":"goodbye", "sentence":"have a nice day"})
-training_data.append({"class":"goodbye", "sentence":"talk to you soon"})
+training_data.append({"class":"goodbye", "sentence":"goodbye"})
 
 #training_data.append({"class":"sandwich", "sentence":"make me a sandwich"})
 #training_data.append({"class":"sandwich", "sentence":"can you make a sandwich?"})
