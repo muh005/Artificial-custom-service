@@ -12,8 +12,9 @@ import math
 requrl = "http://ip:port/aitele-app/service/chat/v1/tech-asr"
 headers = {"Content-type": "application/json; charset=UTF-8"}
 data = {}
-session = math.floor(1000 * random.random())
+
 conv_hist = []
+session = math.floor(1000 * random.random())
 
 corpus = {"1":"Hello, I am the customer service trail of Lu Fund, which is specially designed to help customers do asset allocation. Recently, we are about to have a star product on the shelves, I think it is suitable for you. Do you have time to figure out?",
           "2":"This is an equity-based investment project that invests in companies that are not yet listed on the market but are valuable. Have you ever been heard of this type of product before?",
@@ -34,7 +35,6 @@ corpus = {"1":"Hello, I am the customer service trail of Lu Fund, which is speci
           "17":"Sorry, your question may require a more professional person to answer. I will send the voice version of the product brief to your mobile phone later. You can listen to it when you have time. If you have more questions after listening, you can also consult your account manager or investment consultant. I wish you a happy life, goodbye.",
           "18":"Do you still want to know more about the project?",
           "19":"Hello. I am listening"}
-
 
 app = dash.Dash()
 app.css.append_css({"external_url":"https://codepen.io/chriddyp/pen/bWLwgP.css"})
@@ -74,8 +74,10 @@ app.layout = html.Div([
 def update(click, text):
     global conv_hist
 
+
     if click is not None:
         if text is not '':
+
             request = math.floor(100000000000000*random.random())
             data['requestId'] = str(request)
             data['sessionId'] = str(session)
@@ -110,4 +112,4 @@ def clear_input(_):
 # run app
 if __name__ == '__main__':
     app.run_server()
-
+    
